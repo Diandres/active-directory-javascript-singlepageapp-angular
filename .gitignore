@@ -102,3 +102,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+# oauth.ts secret info
+src/oauth.ts
