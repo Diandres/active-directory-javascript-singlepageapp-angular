@@ -1,2 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+html,
+body,
+app-root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: Roboto, Arial, sans-serif;
+  font-size: clamp(14px, 2vw, 16px);
+  display: flex;
+  flex-direction: column;
+}
+
+mat-sidenav-container {
+  height: 100%;
+}
