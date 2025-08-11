@@ -4,6 +4,9 @@ import { AppComponent } from './app.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { LayoutModule } from '@angular/cdk/layout';
 import { BroadcastService, MsalService, MsalAngularConfiguration } from '@azure/msal-angular';
 import { MSAL_CONFIG, MSAL_CONFIG_ANGULAR } from '@azure/msal-angular/dist/msal.service';
 import { Configuration } from 'msal';
@@ -16,6 +19,9 @@ describe('AppComponent', () => {
         MatToolbarModule,
         MatButtonModule,
         MatListModule,
+        MatSidenavModule,
+        MatIconModule,
+        LayoutModule,
       ],
       declarations: [
         AppComponent

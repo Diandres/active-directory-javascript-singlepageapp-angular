@@ -5,3 +5,39 @@
 a.title {
   color: white;
 }
+
+mat-sidenav-container,
+mat-sidenav-content,
+mat-sidenav {
+  height: 100%;
+}
+
+mat-sidenav {
+  width: 200px;
+}
+
+mat-sidenav-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.menu-button {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .menu-button {
+    display: inline-flex;
+  }
+
+  mat-sidenav:not(.mat-drawer-opened) {
+    display: none;
+  }
+}

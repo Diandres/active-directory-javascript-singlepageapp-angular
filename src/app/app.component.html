@@ -1,14 +1,28 @@
-<mat-toolbar color="primary">
-  <a class="title" href="/">{{ title }}</a>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav [mode]="isScreenSmall ? 'over' : 'side'" [opened]="!isScreenSmall">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/">Home</a>
+      <a mat-list-item routerLink="/profile">Profile</a>
+    </mat-nav-list>
+  </mat-sidenav>
 
-  <div class="toolbar-spacer"></div>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="sidenav.toggle()" class="menu-button">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <a class="title" href="/">{{ title }}</a>
 
-  <a mat-button [routerLink]="['profile']">Profile</a>
+      <div class="toolbar-spacer"></div>
 
-  <button mat-raised-button *ngIf="!loggedIn" (click)="login()">Login</button>
-  <button mat-raised-button *ngIf="loggedIn" (click)="logout()">Logout</button>
-</mat-toolbar>
-<div class="container">
-  <!--This is to avoid reload during acquireTokenSilent() because of hidden iframe -->
-  <router-outlet *ngIf="!isIframe"></router-outlet>
-</div>
+      <a mat-button [routerLink]="['profile']">Profile</a>
+
+      <button mat-raised-button *ngIf="!loggedIn" (click)="login()">Login</button>
+      <button mat-raised-button *ngIf="loggedIn" (click)="logout()">Logout</button>
+    </mat-toolbar>
+    <div class="container">
+      <!--This is to avoid reload during acquireTokenSilent() because of hidden iframe -->
+      <router-outlet *ngIf="!isIframe"></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { BroadcastService, MsalService } from '@azure/msal-angular';
 import { Logger, CryptoUtils } from 'msal';
 
@@ -11,8 +12,13 @@ export class AppComponent implements OnInit {
   title = 'MSAL Angular - Sample App';
   isIframe = false;
   loggedIn = false;
+  isScreenSmall = false;
 
-  constructor(private broadcastService: BroadcastService, private authService: MsalService) { }
+  constructor(
+    private broadcastService: BroadcastService,
+    private authService: MsalService,
+    private breakpointObserver: BreakpointObserver
+  ) { }
 
   ngOnInit() {
     this.isIframe = window !== window.parent && !window.opener;
@@ -38,6 +44,10 @@ export class AppComponent implements OnInit {
       correlationId: CryptoUtils.createNewGuid(),
       piiLoggingEnabled: false
     }));
+
+    this.breakpointObserver.observe('(max-width: 600px)').subscribe(result => {
+      this.isScreenSmall = result.matches;
+    });
   }
 
   checkAccount() {
